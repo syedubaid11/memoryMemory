@@ -8,24 +8,25 @@ export default function App(){
 
   const[url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon/")
 
-  const getPoke=async()=>{
+
+//api call to fetch data from poke api 
+async function getPoke(){
     const res=await axios.get(url)
     const array=[res.data.results]
-    console.log(array)
-    getPokemon(array)
+    displayPoke(array,res)
+    
   }
-const getPokemon=async(array)=>{
-  const map=array.map(async(item)=>{
+
+async function displayPoke(array,res){
+  console.log(res.data.results[0])
+  const map=array.map((item)=>{
     return(
-      console.log(array),
-      <Cards cardname={array}/>
+      <Cards cardname={res.data.results.name}/>
     )
-
-
   })
 
-
 }
+//will get called whenever url changes
   useEffect(()=>{
   getPoke();
 },[url])
@@ -37,7 +38,7 @@ const getPokemon=async(array)=>{
   return(
     <>
     <Navbar/>
-    {map}
+
     </>
   )
 }
