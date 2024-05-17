@@ -10,17 +10,34 @@ export default function App(){
 
   const getPoke=async()=>{
     const res=await axios.get(url)
-    console.log(res.data.results.name)
+    const array=[res.data.results]
+    console.log(array)
+    getPokemon(array)
   }
+const getPokemon=async(array)=>{
+  const map=array.map(async(item)=>{
+    return(
+      console.log(array),
+      <Cards cardname={array}/>
+    )
 
+
+  })
+
+
+}
   useEffect(()=>{
   getPoke();
 },[url])
 
+
+
+
+
   return(
     <>
     <Navbar/>
-    <Cards cardname="morty"/>
+    {map}
     </>
   )
 }
