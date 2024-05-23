@@ -5,18 +5,14 @@ import Cards from "../components/cards";
 import axios from "axios";
 import Data from "../components/data";
 
-export default function App(map){
-  console.log(map)
+export default function App(){
 
-
-
-
-
-
+  
   return(
     <>
+    <Data/>
     <Navbar/>
-    <Cards/>  
+    <Cards/>
 
     </>
   )

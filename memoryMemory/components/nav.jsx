@@ -3,7 +3,7 @@ export default function Navbar(){
         <div>
           <div className="nav-container">
             <div className="nav-content">
-            memoryMemory
+            Memory Pokemon
             </div>
           </div>
         </div>
