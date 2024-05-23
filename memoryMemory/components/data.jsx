@@ -7,31 +7,31 @@ export default function Data(){
 
 
 const[url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon/")
+const[data,setData]=useState("")
 
 
 //api call to fetch data from poke api 
 async function getPoke(){
     const res=await axios.get(url)
     const array=[res.data.results]
-    displayPoke(array)
-    
+    setData(array)
   }
 
+  
 
 
-async function displayPoke(array) {
-  console.log(array)
-  const map = array.map((item) => {
+function displayPoke(data) {
+  console.log(data)
+  const map = data.map((item) => {
     
     return <Cards cardname={item.name} />;
   }
   );
-  return map
 }
 
-//will get called whenever url changes
   useEffect(()=>{
   getPoke();
 },[])
+  
 
 }
